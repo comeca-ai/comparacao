@@ -1,0 +1,281 @@
+ MAESTRO V3 - Sistema de Marketing para Infoprodutos                         
+                                                                              
+  O que é: Um sistema de orquestração de marketing que transforma um termo    
+  simples (ex: "curso de tráfego pago") em um combo completo de materiais de  
+  marketing em ~45 minutos.                                                   
+                                                                              
+  Estrutura do Projeto                                                        
+                                                                              
+  maestro-v3/                                                                 
+  ├── agents/                                                                 
+  │   ├── 00-MAESTRO-V3.md        ← Orquestrador principal                    
+  │   ├── 01-VALIDATOR-AGENT-V3.md ← Valida viabilidade da ideia              
+  │   ├── 02-AUTO-QA-AGENT-V3.md   ← Garante qualidade dos outputs            
+  │   └── 03-EDITOR-RAPIDO-AGENT-V3.md ← Permite edições rápidas              
+  ├── README.md                                                               
+  ├── SUMARIO-EXECUTIVO.md                                                    
+  ├── EXEMPLO-FLUXO-REAL.md                                                   
+  └── outros arquivos de doc                                                  
+                                                                              
+  4 Agentes do Sistema                                                        
+                                                                              
+  | Agente        | Função                                                    
+                          |                                                   
+  |---------------|-----------------------------------------------------------
+  ------------------------|                                                   
+  | MAESTRO       | Orquestra todo o fluxo, coordena os outros agentes        
+                          |                                                   
+  | VALIDATOR     | Valida se a ideia é viável ANTES de começar (mercado      
+  existe? público pode pagar?) |                                              
+  | AUTO-QA       | Verifica qualidade após cada output (checklists           
+  específicos por tipo)             |                                         
+  | EDITOR RÁPIDO | Permite micro-edições sem regenerar tudo (ex: só mudar    
+  headline)                  |                                                
+                                                                              
+  Fluxo                                                                       
+                                                                              
+  Input → VALIDATOR → RESEARCH → PERSONAS → LP/Social/Ads/Email/VSL/Webinar → 
+  VERSIONAMENTO                                                               
+           ↓              ↓          ↓                    ↓                   
+        Viável?      Auto-QA     Auto-QA              Auto-QA                 
+                                                                              
+  Comandos Principais                                                         
+                                                                              
+  - /combo [termo] - Gera combo completo                                      
+  - /validar [termo] - Apenas valida ideia                                    
+  - /refazer-headline [seção] [foco] - Edita só headline                      
+  - /testar-variacao [elemento] [A] [B] - Cria versões A/B                    
+                                                                              
+  ---                                                                         
+  Pode me explicar o que você precisa fazer com este sistema.                 
+                                                                              
+> ne explica o que e cada versai                                              
+                                                                              
+● Versões do MAESTRO                                                          
+                                                                              
+  V2 vs V3 (Evolução do Sistema)                                              
+                                                                              
+  | Aspecto       | V2 (Antiga)          | V3 (Atual)                    |    
+  |---------------|----------------------|-------------------------------|    
+  | Validação     | Não tinha            | Valida ideia antes de começar |    
+  | Qualidade     | ~70% (manual)        | ~95% (Auto-QA automático)     |    
+  | Edição        | 20+ min (refaz tudo) | 2 min (edita só o necessário) |    
+  | Versionamento | Não tinha            | Controla v1.0, v1.1, etc      |    
+  | Tempo total   | 60 min               | 45 min                        |    
+                                                                              
+  ---                                                                         
+  Os 4 Arquivos de Agentes (V3)                                               
+                                                                              
+  1. 00-MAESTRO-V3.md - O Maestro (Chefe)                                     
+  - Orquestrador principal                                                    
+  - Recebe o comando do usuário (ex: /combo curso de copy)                    
+  - Coordena todos os outros agentes na ordem certa                           
+  - Define o fluxo completo                                                   
+                                                                              
+  2. 01-VALIDATOR-AGENT-V3.md - O Guardião                                    
+  - Roda PRIMEIRO, antes de tudo                                              
+  - Valida se a ideia faz sentido:                                            
+    - Mercado existe? (mín 1k buscas/mês)                                     
+    - Público pode pagar?                                                     
+    - Problema é urgente?                                                     
+    - Tem concorrentes? (prova de mercado)                                    
+  - Se não passar → sugere pivôs alternativos                                 
+                                                                              
+  3. 02-AUTO-QA-AGENT-V3.md - O Inspetor de Qualidade                         
+  - Roda DEPOIS de cada output (research, personas, LP, etc)                  
+  - Checklists específicos por tipo:                                          
+    - Research: tem dados reais? fontes?                                      
+    - Personas: são distintas?                                                
+    - LP: headline específica? CTA visível?                                   
+  - Se falhar → refaz só a parte que falhou                                   
+                                                                              
+  4. 03-EDITOR-RAPIDO-AGENT-V3.md - O Iterador                                
+  - Permite edições rápidas SEM refazer tudo                                  
+  - Comandos tipo:                                                            
+    - /refazer-headline (2 min)                                               
+    - /trocar-estilo (3 min)                                                  
+    - /testar-variacao (1 min)                                                
+  - Salva versões automaticamente (v1.0 → v1.1 → v1.2)                        
+                                                                              
+  ---                                                                         
+  Versionamento de Outputs                                                    
+                                                                              
+  Quando você gera e edita materiais:                                         
+                                                                              
+  v1.0  ← LP original gerada                                                  
+    │                                                                         
+    ├── v1.1  ← Mudou headline                                                
+    │                                                                         
+    ├── v1.2  ← Aumentou urgência                                             
+    │                                                                         
+    └── v2.0  ← Adaptou para outra persona                                    
+                                                                              
+  Variações A/B:                                                              
+  v1.1a ← Headline versão A                                                   
+  v1.1b ← Headline versão B                                                   
+                                                                              
+  Isso permite comparar (/diff v1.0 v1.1) e voltar atrás (/revert v1.0).      
+                                                                              
+  ---                                                                         
+  Ficou claro? Quer que eu detalhe algum agente específico?                   
+                                                                              
+> o que fa do iinicialao final o proeso meu amigo                             
+                                                                              
+● Processo Completo - Do Início ao Fim                                        
+                                                                              
+  Você digita:                                                                
+                                                                              
+  /combo curso de tráfego pago                                                
+                                                                              
+  ---                                                                         
+  PASSO 1: VALIDATOR (2-3 min)                                                
+                                                                              
+  Pergunta: "Essa ideia vale a pena?"                                         
+                                                                              
+  Verifica:                                                                   
+  ✅ Mercado existe? → 12k buscas/mês, tem demanda                            
+  ✅ Público pode pagar? → PMEs ganham R$10-50k/mês                           
+  ✅ Problema é urgente? → Não vender = perder dinheiro todo dia              
+  ✅ Tem concorrentes? → 50+ cursos no Hotmart (prova de mercado)             
+                                                                              
+  → APROVADO! Continua...                                                     
+                                                                              
+  Se reprovar → sugere 3 ideias alternativas e para aqui.                     
+                                                                              
+  ---                                                                         
+  PASSO 2: PERGUNTAS RÁPIDAS (2 min)                                          
+                                                                              
+  Maestro faz no máximo 3 perguntas essenciais:                               
+                                                                              
+  1. Qual o ticket do produto? (R$297, R$497, R$997?)                         
+  2. Tem depoimentos de alunos?                                               
+  3. Qual o diferencial principal?                                            
+                                                                              
+  ---                                                                         
+  PASSO 3: RESEARCH (10 min)                                                  
+                                                                              
+  Pesquisa profunda do mercado                                                
+                                                                              
+  Gera:                                                                       
+  - Dados do mercado (números reais)                                          
+  - Análise de 3-5 concorrentes                                               
+  - Linguagem do público (citações reais)                                     
+  - Dores profundas                                                           
+  - Objeções comuns                                                           
+                                                                              
+  → AUTO-QA verifica qualidade                                                
+  → Se passar, continua. Se não, refaz.                                       
+                                                                              
+  ---                                                                         
+  PASSO 4: PERSONAS (10 min)                                                  
+                                                                              
+  Cria 3 personas distintas                                                   
+                                                                              
+  Persona 1: João, iniciante, não sabe por onde começar                       
+  Persona 2: Marina, executiva em transição, tem experiência mas não em       
+  digital                                                                     
+  Persona 3: Rafael, já fatura mas quer escalar                               
+                                                                              
+  Cada uma com:                                                               
+  - Dor principal diferente                                                   
+  - Linguagem diferente                                                       
+  - Objeções diferentes                                                       
+  - "Como vender pra ela"                                                     
+                                                                              
+  → AUTO-QA verifica se são realmente distintas                               
+                                                                              
+  ---                                                                         
+  PASSO 5: PRODUÇÃO (20 min)                                                  
+                                                                              
+  Cria todos os materiais                                                     
+                                                                              
+  Para CADA persona, gera:                                                    
+                                                                              
+  📄 LP (Landing Page)                                                        
+     - Hero com headline específica                                           
+     - Benefícios, prova social, FAQ                                          
+     - CTA, garantia, urgência                                                
+                                                                              
+  📱 SOCIAL (Pack de posts)                                                   
+     - Carrosséis, reels, stories                                             
+     - Calendário de publicação                                               
+                                                                              
+  🎯 ADS (Anúncios)                                                           
+     - Copy para Meta/Google                                                  
+     - Variações A/B                                                          
+                                                                              
+  📧 EMAIL (Sequências)                                                       
+     - Welcome, nurturing, vendas                                             
+     - 5-7 emails por sequência                                               
+                                                                              
+  🎬 VSL (Roteiro de vídeo de vendas)                                         
+     - Estrutura PASTOR completa                                              
+                                                                              
+  🎤 WEBINAR (Roteiro de apresentação)                                        
+     - Slides e script                                                        
+                                                                              
+  → AUTO-QA roda em CADA output                                               
+                                                                              
+  ---                                                                         
+  PASSO 6: VERSIONAMENTO                                                      
+                                                                              
+  Salva tudo organizado                                                       
+                                                                              
+  /produto-trafego-pago/                                                      
+  ├── v1.0/                                                                   
+  │   ├── research.md                                                         
+  │   ├── personas.md                                                         
+  │   ├── lp-persona1.html                                                    
+  │   ├── lp-persona2.html                                                    
+  │   ├── lp-persona3.html                                                    
+  │   ├── social-pack.md                                                      
+  │   ├── ads.md                                                              
+  │   ├── emails.md                                                           
+  │   ├── vsl.md                                                              
+  │   └── webinar.md                                                          
+                                                                              
+  ---                                                                         
+  PASSO 7: ENTREGA + ITERAÇÃO                                                 
+                                                                              
+  Você recebe tudo e pode editar rápido                                       
+                                                                              
+  "Não gostei do headline do hero"                                            
+  → /refazer-headline hero "foco em ROI"                                      
+  → 2 minutos, salva como v1.1                                                
+                                                                              
+  "Quero testar 2 versões do CTA"                                             
+  → /testar-variacao cta "Garantir Vaga" "Começar Agora"                      
+  → 1 minuto, cria v1.1a e v1.1b                                              
+                                                                              
+  "Quero exportar pro Hotmart"                                                
+  → /exportar-para hotmart                                                    
+  → Pronto pra subir                                                          
+                                                                              
+  ---                                                                         
+  Resumo Visual                                                               
+                                                                              
+  INPUT (/combo)                                                              
+      ↓                                                                       
+  VALIDATOR → Ideia é boa? ✅                                                 
+      ↓                                                                       
+  PERGUNTAS → Coleta info essencial                                           
+      ↓                                                                       
+  RESEARCH → Dados + concorrência + linguagem                                 
+      ↓ (Auto-QA)                                                             
+  PERSONAS → 3 avatares distintos                                             
+      ↓ (Auto-QA)                                                             
+  PRODUÇÃO → LP + Social + Ads + Email + VSL + Webinar                        
+      ↓ (Auto-QA em cada)                                                     
+  VERSÃO v1.0 → Tudo salvo                                                    
+      ↓                                                                       
+  EDITOR RÁPIDO → Iterar sem refazer tudo                                     
+      ↓                                                                       
+  EXPORTAR → Hotmart, Kiwify, HTML, etc.                                      
+                                                                              
+  Tempo total: ~45 minutos                                                    
+  Qualidade: ~95% garantida                                                   
+                                                                              
+  ---                                                                         
+  Entendeu o fluxo? Quer que eu explique alguma etapa específica com mais     
+  detalhes?                                                                   
+               
