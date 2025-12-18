@@ -1,0 +1,272 @@
+Basta um termo simples (ex: "curso de tráfego pago") e o sistema gera tudo automaticamente.
+
+📦 Agentes Incluídos (10 agentes)
+Agente	Arquivo	Função
+🎼 Maestro	00-MAESTRO.md	PRINCIPAL - Aceita input simples, coordena e revisa tudo
+🔍 Research	01-RESEARCH-AGENT.md	Pesquisa de mercado, concorrência, público
+👥 Personas	02-PERSONAS-AGENT.md	Cria avatares detalhados e acionáveis
+📱 Social Media	03-SOCIAL-AGENT.md	Conteúdo Instagram (carrosséis, reels, stories)
+🎯 Ads	04-ADS-AGENT.md	Criativos para Meta, Google, TikTok
+📧 Email	05-EMAIL-AGENT.md	Sequências de email marketing
+🎨 LP	06-LP-AGENT.md	Landing pages de alta conversão
+✍️ Redator	07-REDATOR-AGENT.md	Blogs, e-books, materiais por persona
+🎬 VSL	08-VSL-AGENT.md	NOVO - Roteiros de Video Sales Letter
+🎤 Webinar	09-WEBINAR-AGENT.md	NOVO - Roteiros de webinar de venda
+🎯 Como Usar
+Opção 1: Combo Completo (RECOMENDADO)
+Use o Maestro - basta um termo simples:
+
+# Copie o Maestro para seu CLAUDE.md
+cp agents/00-MAESTRO.md CLAUDE.md
+
+# Abra o Claude Code
+claude
+
+# Digite apenas:
+/combo curso de tráfego pago
+
+# Ou ainda mais simples:
+"quero um combo para curso de unhas"
+O Maestro faz no máximo 3 perguntas e gera TUDO automaticamente.
+
+Opção 2: Agentes Individuais
+Use agentes específicos conforme necessidade:
+
+# Para apenas Landing Page
+cp agents/06-LP-AGENT.md CLAUDE.md
+
+# Para apenas Social Media
+cp agents/03-SOCIAL-AGENT.md CLAUDE.md
+
+# Para apenas Conteúdo/Blogs
+cp agents/07-REDATOR-AGENT.md CLAUDE.md
+Opção 3: Combinar Agentes
+Concatene múltiplos agentes em um único CLAUDE.md:
+
+cat agents/01-RESEARCH-AGENT.md agents/02-PERSONAS-AGENT.md agents/06-LP-AGENT.md > CLAUDE.md
+🔄 Fluxo de Trabalho
+INPUT SIMPLES
+"curso de gestão de tempo"
+         │
+         ▼
+   MAESTRO FAZ 3 PERGUNTAS
+   (preço, provas, resultado)
+         │
+         ▼
+   RESEARCH AUTOMÁTICO
+   (mercado, concorrência, linguagem)
+         │
+         ▼
+   3 PERSONAS CRIADAS
+   (primária, secundária, terciária)
+         │
+         ▼
+   PRODUÇÃO PARA CADA PERSONA
+   ├── LP (código pronto)
+   ├── Social (2 semanas)
+   ├── Ads (pack de teste)
+   ├── Emails (todas sequências)
+   └── Conteúdo (blogs, lead magnet)
+         │
+         ▼
+   COMBO COMPLETO ORGANIZADO
+📋 Input Mínimo Necessário
+O Maestro aceita desde o mais simples:
+
+✓ "curso de copy"
+✓ "mentoria fitness"  
+✓ "ebook produtividade"
+Até o mais completo:
+
+✓ "Curso de copy para Instagram, R$497, 
+   para empreendedores que querem vender 
+   mais nos stories, tenho 50 depoimentos"
+O sistema pergunta só o essencial e assume o resto com base em pesquisa.
+
+💡 Comandos Úteis
+Maestro (Principal):
+/combo [termo]           → Combo completo
+/estrategia [termo]      → Só Research + Personas
+/lp [termo]              → LP + estratégia
+/social [termo]          → Social pack + estratégia
+/ads [termo]             → Ads pack + estratégia
+/emails [termo]          → Emails + estratégia
+/conteudo [termo]        → Blogs + materiais + estratégia
+/vsl [termo]             → VSL + estratégia
+/webinar [termo]         → Webinar + estratégia
+Por Agente Individual:
+# Research
+/research completo [nicho]
+
+# Personas
+/persona criar [nicho]
+
+# Social
+/social carrossel [tema] [persona]
+/social pack semanal [nicho]
+
+# Ads
+/ads pack teste [produto]
+
+# Email
+/email welcome [produto]
+/email lançamento [produto]
+
+# Redator
+/redator blog tofu [tema] [persona]
+/redator ebook [tema]
+/redator pack mensal [nicho] [persona]
+
+# VSL
+/vsl completo [produto] [duração]
+/vsl hook [produto]
+/vsl mini [produto]
+
+# Webinar
+/webinar completo [produto]
+/webinar slides [produto]
+/webinar emails [produto]
+
+# LP
+"Crie LP para [briefing]"
+🛠️ Customização
+Adaptar para Seu Nicho:
+Abra o agente desejado
+Ajuste exemplos para seu mercado
+Adicione templates específicos do seu nicho
+Inclua referências de concorrentes
+Criar Novos Agentes:
+Siga a estrutura:
+
+# [EMOJI] NOME DO AGENTE - Subtítulo
+
+## 🎯 MISSÃO
+[O que esse agente faz]
+
+## 📊 ÁREAS DE ATUAÇÃO
+[Escopo detalhado]
+
+## 📋 TEMPLATES
+[Estruturas reutilizáveis]
+
+## ⚡ COMANDOS RÁPIDOS
+[Atalhos de uso]
+
+## 🎯 REGRAS
+[O que sempre/nunca fazer]
+
+## 🔄 INTEGRAÇÃO
+[Como conecta com outros agentes]
+📊 Stack Técnico Padrão
+Os agentes assumem:
+
+Frontend: React + Vite + Tailwind CSS
+Animações: Framer Motion
+Email: ActiveCampaign / RD Station / Mailchimp
+Ads: Meta Ads + Google Ads
+Checkout: Hotmart / Kiwify / Eduzz
+Ajuste conforme sua stack.
+
+🆘 Troubleshooting
+Output muito genérico? → Forneça briefing mais detalhado → Execute Research Agent primeiro
+
+Agente não segue estrutura? → Mencione especificamente o template desejado → Use comandos rápidos
+
+Faltou alguma seção? → Peça especificamente: "Adicione seção X" → Combine com outro agente
+
+📁 Estrutura de Arquivos
+/agents
+├── 00-MAESTRO.md              # PRINCIPAL (input simples → combo completo)
+├── 01-RESEARCH-AGENT.md       # Inteligência de mercado
+├── 02-PERSONAS-AGENT.md       # Criação de avatares
+├── 03-SOCIAL-AGENT.md         # Conteúdo Instagram
+├── 04-ADS-AGENT.md            # Criativos de anúncios
+├── 05-EMAIL-AGENT.md          # Email marketing
+├── 06-LP-AGENT.md             # Landing pages
+├── 07-REDATOR-AGENT.md        # Blogs, e-books, materiais escritos
+├── 08-VSL-AGENT.md            # Video Sales Letter
+├── 09-WEBINAR-AGENT.md        # Webinars de venda
+└── README.md                  # Este arquivo
+📦 O Que o Combo Entrega (por persona)
+📁 COMBO_[PRODUTO]/
+├── 00_ESTRATEGIA/
+│   ├── Research_Report.md
+│   ├── Persona_1.md
+│   ├── Persona_2.md
+│   └── Persona_3.md
+│
+├── 01_PERSONA_1/
+│   ├── landing_page/
+│   │   ├── copy.md
+│   │   └── codigo/
+│   ├── social_media/
+│   │   ├── carrosseis/
+│   │   ├── reels/
+│   │   └── calendario.md
+│   ├── anuncios/
+│   │   ├── estaticos/
+│   │   ├── videos/
+│   │   └── copy_variations.md
+│   ├── emails/
+│   │   ├── welcome_sequence.md
+│   │   ├── launch_sequence.md
+│   │   └── cart_abandonment.md
+│   ├── conteudo/
+│   │   ├── blog_posts/
+│   │   ├── lead_magnet/
+│   │   └── case_study_template.md
+│   ├── vsl/
+│   │   ├── roteiro_completo.md
+│   │   ├── hooks_alternativos.md
+│   │   └── checklist_producao.md
+│   └── webinar/
+│       ├── roteiro_completo.md
+│       ├── slides_lista.md
+│       └── emails_convite.md
+│
+├── 02_PERSONA_2/
+│   └── [mesma estrutura]
+│
+├── 03_PERSONA_3/
+│   └── [mesma estrutura]
+│
+├── CHECKLIST.md
+├── CALENDARIO.md
+└── README.md
+🚀 Quick Start
+# 1. Extrair o zip
+unzip agentes-infoprodutos.zip
+
+# 2. Copiar o Maestro
+cp agents/00-MAESTRO.md CLAUDE.md
+
+# 3. Abrir Claude Code
+claude
+
+# 4. Digitar apenas:
+/combo curso de inglês para viajantes
+Pronto. O sistema faz 3 perguntas e gera tudo.
+
+🛠️ Customização
+Adaptar para Seu Nicho:
+Abra o agente desejado
+Ajuste exemplos para seu mercado
+Adicione templates específicos
+Inclua referências de concorrentes
+Criar Novos Agentes:
+Siga a estrutura padrão:
+
+# [EMOJI] NOME DO AGENTE
+
+## 🎯 MISSÃO
+## 📊 ÁREAS DE ATUAÇÃO
+## 📋 TEMPLATES
+## ⚡ COMANDOS RÁPIDOS
+## 🎯 REGRAS
+## 🔄 INTEGRAÇÃO
+🆘 Troubleshooting
+Problema	Solução
+Output genérico	Forneça mais contexto ou deixe o Maestro fazer as perguntas
+Faltou material para uma persona	Peça: "/adicionar [material] para persona [X]"
+Quer só um tipo de conteúdo	Use o agente individual (ex: /social ou /redator)
+Precisa de mais variações	Peça: "Crie 3 variações alternativas de [material]"
