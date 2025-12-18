@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formação Exit Ready - Prepare sua empresa para venda</title>
+    
+    <!-- META TAGS SEO -->
+    <meta name="description" content="Prepare sua empresa para ser vendida por até 3x mais valor em 90 dias. Formação completa para empreendedores que querem vender seu negócio.">
+    <meta name="keywords" content="vender empresa, preparar empresa para venda, valuation, exit, M&A, PME">
+    
+    <!-- OPEN GRAPH -->
+    <meta property="og:title" content="Formação Exit Ready - Venda sua empresa pelo valor que ela merece">
+    <meta property="og:description" content="Prepare sua empresa para ser vendida por até 3x mais valor em 90 dias.">
+    <meta property="og:type" content="website">
+    
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           RESET E BASE
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #1a365d;
+            --primary-dark: #0d1b2a;
+            --accent: #c6a962;
+            --accent-hover: #b8953d;
+            --text: #1a202c;
+            --text-light: #4a5568;
+            --text-muted: #718096;
+            --bg: #ffffff;
+            --bg-alt: #f7fafc;
+            --bg-dark: #1a202c;
+            --success: #38a169;
+            --border: #e2e8f0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--bg);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .container-narrow {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* ============================================
+           TIPOGRAFIA
+           ============================================ */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--primary-dark);
+        }
+        
+        h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+        h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
+        h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
+        
+        p {
+            color: var(--text-light);
+            font-size: 1.125rem;
+        }
+        
+        /* ============================================
+           BOTÕES
+           ============================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 18px 36px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary-dark);
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(198, 169, 98, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* ============================================
+           SEÇÃO HERO
+           ============================================ */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 80px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(198, 169, 98, 0.2);
+            color: var(--accent);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            border: 1px solid rgba(198, 169, 98, 0.3);
+        }
+        
+        /* ============================================
+           COPY SWAP #1: HEADLINE
+           Testar uma por dia até encontrar winner
+           Métrica: Se CTR cai < 5%, trocar
+           ============================================ */
+        
+        /* VARIAÇÃO 1 (CURRENT) - Ângulo LIBERDADE - Para Roberto */
+        .hero h1 {
+            color: white;
+            margin-bottom: 24px;
+        }
+        
+        /* 
+        VARIAÇÕES PARA TESTAR:
+        
+        V1 (CURRENT - Liberdade): "Venda sua empresa e compre sua liberdade"
+        
+        V2 (Valuation - Marcelo): "Sua empresa vale 3x mais do que você pensa"
+        
+        V3 (Legado - Carlos): "30 anos de trabalho merecem um final digno"
+        
+        V4 (Dor): "Sua empresa não funciona sem você? Isso tem solução."
+        */
+        
+        /* ============================================
+           COPY SWAP #2: SUBHEADLINE
+           ============================================ */
+        .hero-subtitle {
+            font-size: 1.375rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+        
+        /*
+        VARIAÇÕES PARA TESTAR:
+        
+        V1 (CURRENT): "Prepare sua empresa para ser vendida por até 3x mais valor em 90 dias"
+        
+        V2: "O programa completo para empreendedores que querem vender seu negócio pelo valor justo"
+        
+        V3: "De 'empresa que depende de você' para 'empresa pronta para vender'"
+        */
+        
+        .hero-micro {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+        }
+        
+        /* ============================================
+           COPY SWAP #3: CTA PRINCIPAL
+           CTA Override da Persona Principal (Roberto)
+           ============================================ */
+        .hero-cta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        /*
+        VARIAÇÕES DE CTA PARA TESTAR:
+        
+        V1 (Roberto - Liberdade): "QUERO MINHA LIBERDADE"
+        V2 (Marcelo - Analítico): "CALCULAR MEU POTENCIAL"
+        V3 (Carlos - Família): "GARANTIR O FUTURO DA MINHA FAMÍLIA"
+        V4 (Genérico): "QUERO SABER MAIS"
+        */
+        
+        .hero-cta .btn-primary {
+            font-size: 1.25rem;
+            padding: 20px 48px;
+        }
+        
+        .hero-trust {
+            margin-top: 48px;
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+        
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9375rem;
+        }
+        
+        .trust-item svg {
+            width: 20px;
+            height: 20px;
+            color: var(--accent);
+        }
+        
+        /* ============================================
+           SEÇÃO: PARA QUEM É
+           ============================================ */
+        .for-who {
+            padding: 80px 0;
+            background: var(--bg-alt);
+        }
+        
+        .for-who-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+        
+        .for-who-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .for-who-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+        
+        .for-who-card.highlight {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 1px var(--accent);
+        }
+        
+        .for-who-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .for-who-icon svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+        
+        .for-who-card h3 {
+            margin-bottom: 12px;
+        }
+        
+        .for-who-card p {
+            font-size: 1rem;
+            margin-bottom: 16px;
+        }
+        
+        .for-who-tag {
+            display: inline-block;
+            background: var(--bg-alt);
+            color: var(--text-muted);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8125rem;
+            font-weight: 500;
+        }
+        
+        /* ============================================
+           SEÇÃO: PROBLEMA
+           ============================================ */
+        .problem {
+            padding: 100px 0;
+        }
+        
+        .problem-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+        
+        .problem-header h2 {
+            margin-bottom: 16px;
+        }
+        
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        
+        .problem-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            border-left: 4px solid #e53e3e;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .problem-card h3 {
+            color: #c53030;
+            margin-bottom: 12px;
+            font-size: 1.125rem;
+        }
+        
+        .problem-card p {
+            font-size: 1rem;
+        }
+        
+        .problem-quote {
+            margin-top: 16px;
+            padding: 16px;
+            background: #fff5f5;
+            border-radius: 8px;
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.9375rem;
+        }
+        
+        /* ============================================
+           SEÇÃO: SOLUÇÃO
+           ============================================ */
+        .solution {
+            padding: 100px 0;
+            background: var(--bg-alt);
+        }
+        
+        .solution-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+        
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+        
+        .solution-card {
+            background: white;
+            padding: 40px 32px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
+        
+        .solution-number {
+            width: 48px;
+            height: 48px;
+            background: var(--accent);
+            color: var(--primary-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin: 0 auto 20px;
+        }
+        
+        .solution-card h3 {
+            margin-bottom: 12px;
+        }
+        
+        /* ============================================
+           SEÇÃO: O QUE VOCÊ VAI APRENDER
+           ============================================ */
+        .modules {
+            padding: 100px 0;
+        }
+        
+        .modules-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+        
+        .module-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .module-item {
+            display: flex;
+            gap: 24px;
+            padding: 32px;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .module-item:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .module-number {
+            width: 56px;
+            height: 56px;
+            min-width: 56px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .module-content h3 {
+            margin-bottom: 8px;
+        }
+        
+        .module-content p {
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+        
+        .module-deliverable {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f0fff4;
+            color: var(--success);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        /* ============================================
+           SEÇÃO: PROVA SOCIAL
+           COPY SWAP #4: DEPOIMENTOS
+           ============================================ */
+        .testimonials {
+            padding: 100px 0;
+            background: var(--bg-alt);
+        }
+        
+        .testimonials-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-quote {
+            font-size: 1.0625rem;
+            color: var(--text);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .testimonial-avatar {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .testimonial-info h4 {
+            font-size: 1rem;
+            color: var(--text);
+        }
+        
+        .testimonial-info p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+        
+        .testimonial-result {
+            margin-top: 20px;
+            padding: 16px;
+            background: #f0fff4;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .testimonial-result-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--success);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .testimonial-result-text {
+            font-weight: 600;
+            color: var(--success);
+        }
+        
+        /*
+        VARIAÇÕES DE PROVA SOCIAL:
+        
+        V1 (Para Roberto): Foco em "saiu da operação", "tem tempo agora"
+        V2 (Para Marcelo): Foco em números, "vendeu por X", "ROI de Y"
+        V3 (Para Carlos): Foco em "família protegida", "aposentadoria digna"
+        */
+        
+        /* ============================================
+           SEÇÃO: MENTOR
+           ============================================ */
+        .mentor {
+            padding: 100px 0;
+        }
+        
+        .mentor-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        @media (max-width: 768px) {
+            .mentor-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+        
+        .mentor-image {
+            position: relative;
+        }
+        
+        .mentor-photo {
+            width: 100%;
+            max-width: 300px;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            font-weight: 700;
+        }
+        
+        .mentor-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--accent);
+            color: var(--primary-dark);
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .mentor-info h2 {
+            margin-bottom: 16px;
+        }
+        
+        .mentor-info > p {
+            margin-bottom: 24px;
+        }
+        
+        .mentor-credentials {
+            list-style: none;
+        }
+        
+        .mentor-credentials li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+        
+        .mentor-credentials svg {
+            width: 24px;
+            height: 24px;
+            color: var(--success);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        /* ============================================
+           SEÇÃO: PREÇO
+           COPY SWAP #5: PRICING
+           ============================================ */
+        .pricing {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: white;
+        }
+        
+        .pricing-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+        
+        .pricing-header h2 {
+            color: white;
+            margin-bottom: 16px;
+        }
+        
+        .pricing-header p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .pricing-card {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 48px;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .pricing-tag {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary-dark);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        
+        .pricing-value {
+            margin-bottom: 8px;
+        }
+        
+        .pricing-old {
+            text-decoration: line-through;
+            color: var(--text-muted);
+            font-size: 1.25rem;
+        }
+        
+        .pricing-current {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+        }
+        
+        .pricing-current span {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .pricing-installment {
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 32px;
+        }
+        
+        .pricing-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+        
+        .pricing-features svg {
+            width: 24px;
+            height: 24px;
+            color: var(--success);
+            flex-shrink: 0;
+        }
+        
+        .pricing-cta {
+            width: 100%;
+            font-size: 1.25rem;
+            padding: 20px 32px;
+        }
+        
+        .pricing-guarantee {
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.9375rem;
+        }
+        
+        .pricing-guarantee svg {
+            width: 20px;
+            height: 20px;
+            color: var(--success);
+        }
+        
+        /*
+        VARIAÇÕES DE CTA NO PRICING:
+        
+        V1 (Roberto): "QUERO MINHA LIBERDADE"
+        V2 (Marcelo): "COMEÇAR AGORA"
+        V3 (Carlos): "GARANTIR O FUTURO DA MINHA FAMÍLIA"
+        */
+        
+        /* ============================================
+           SEÇÃO: GARANTIA
+           ============================================ */
+        .guarantee {
+            padding: 80px 0;
+            background: #f0fff4;
+        }
+        
+        .guarantee-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .guarantee-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        .guarantee-badge {
+            width: 120px;
+            height: 120px;
+            min-width: 120px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 3px solid var(--success);
+        }
+        
+        .guarantee-badge span:first-child {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--success);
+        }
+        
+        .guarantee-badge span:last-child {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+        
+        .guarantee-text h3 {
+            color: var(--success);
+            margin-bottom: 12px;
+        }
+        
+        .guarantee-text p {
+            font-size: 1rem;
+        }
+        
+        /* ============================================
+           SEÇÃO: FAQ
+           ============================================ */
+        .faq {
+            padding: 100px 0;
+        }
+        
+        .faq-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+        
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 24px 0;
+        }
+        
+        .faq-question {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text);
+            cursor: pointer;
+            padding: 0;
+        }
+        
+        .faq-question svg {
+            width: 24px;
+            height: 24px;
+            color: var(--text-muted);
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-question[aria-expanded="true"] svg {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            padding-top: 16px;
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        
+        .faq-answer.hidden {
+            display: none;
+        }
+        
+        /* ============================================
+           SEÇÃO: CTA FINAL
+           ============================================ */
+        .final-cta {
+            padding: 100px 0;
+            background: var(--bg-alt);
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            margin-bottom: 16px;
+        }
+        
+        .final-cta > p {
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        .final-cta .btn {
+            font-size: 1.25rem;
+            padding: 20px 48px;
+        }
+        
+        /* ============================================
+           COPY SWAP #6: URGÊNCIA/ESCASSEZ
+           ============================================ */
+        .urgency-bar {
+            background: var(--accent);
+            color: var(--primary-dark);
+            text-align: center;
+            padding: 12px;
+            font-weight: 600;
+            font-size: 0.9375rem;
+        }
+        
+        /*
+        VARIAÇÕES DE URGÊNCIA:
+        
+        V1 (Social Proof): "🔥 47 pessoas visualizando esta página agora"
+        V2 (Escassez): "⚠️ Últimas 5 vagas para a turma de Janeiro"
+        V3 (Countdown): "⏰ Preço especial termina em 23:59:59"
+        V4 (Bônus): "🎁 Bônus exclusivo para quem entrar hoje"
+        */
+        
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            background: var(--primary-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.875rem;
+        }
+        
+        .footer a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: var(--accent);
+        }
+        
+        /* ============================================
+           RESPONSIVO
+           ============================================ */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0 80px;
+            }
+            
+            .hero-trust {
+                gap: 24px;
+            }
+            
+            .trust-item {
+                font-size: 0.8125rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .module-item {
+                flex-direction: column;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card {
+                padding: 32px 24px;
+            }
+            
+            .pricing-current {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- ============================================
+         URGENCY BAR
+         COPY SWAP #6: URGÊNCIA
+         ============================================ -->
+    <!-- V1 (CURRENT) - Escassez -->
+    <div class="urgency-bar">
+        ⚠️ Vagas limitadas: Próxima turma começa em Janeiro/2025
+    </div>
+    
+    <!-- V2 Alt: "🔥 47 empreendedores já estão preparando suas empresas para venda" -->
+    <!-- V3 Alt: "🎁 Bônus exclusivo: Planilha de Valuation para quem entrar esta semana" -->
+    
+    <!-- ============================================
+         HERO SECTION
+         ============================================ -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                
+                <span class="hero-badge">Formação para Empreendedores</span>
+                
+                <!-- ============================================
+                     COPY SWAP #1: HEADLINE
+                     V1 (CURRENT) - Ângulo Liberdade (Roberto)
+                     ============================================ -->
+                <h1>Venda sua empresa e compre sua liberdade</h1>
+                
+                <!-- 
+                V2 (Valuation - Marcelo): 
+                <h1>Sua empresa vale 3x mais do que você pensa</h1>
+                
+                V3 (Legado - Carlos):
+                <h1>30 anos de trabalho merecem um final digno</h1>
+                -->
+                
+                <!-- ============================================
+                     COPY SWAP #2: SUBHEADLINE
+                     ============================================ -->
+                <p class="hero-subtitle">
+                    Prepare sua empresa para ser vendida por até 3x mais valor em 90 dias
+                </p>
+                
+                <p class="hero-micro">
+                    Para empreendedores que faturam R$500k - R$10M e querem vender nos próximos 1-5 anos
+                </p>
+                
+                <!-- ============================================
+                     COPY SWAP #3: CTA
+                     V1 (CURRENT) - CTA Override Roberto
+                     ============================================ -->
+                <div class="hero-cta">
+                    <a href="#pricing" class="btn btn-primary">
+                        QUERO MINHA LIBERDADE →
+                    </a>
+                    
+                    <!-- 
+                    V2 (Marcelo): <a href="#pricing" class="btn btn-primary">CALCULAR MEU POTENCIAL →</a>
+                    V3 (Carlos): <a href="#pricing" class="btn btn-primary">GARANTIR O FUTURO DA MINHA FAMÍLIA →</a>
+                    -->
+                    
+                    <span style="color: rgba(255,255,255,0.6); font-size: 0.875rem;">
+                        Só 4h/semana por 12 semanas • Garantia de 15 dias
+                    </span>
+                </div>
+                
+                <div class="hero-trust">
+                    <div class="trust-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        +50 empresas preparadas
+                    </div>
+                    <div class="trust-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Metodologia testada
+                    </div>
+                    <div class="trust-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Valuation 2-3x maior
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SEÇÃO: PARA QUEM É (3 Personas)
+         ============================================ -->
+    <section class="for-who">
+        <div class="container">
+            <div style="text-align: center; max-width: 700px; margin: 0 auto 48px;">
+                <h2>Para quem é a Formação Exit Ready?</h2>
+                <p>Se você se identifica com algum desses perfis, essa formação foi feita para você</p>
+            </div>
+            
+            <div class="for-who-grid">
+                
+                <!-- PERSONA 1: Roberto - O Cansado -->
+                <div class="for-who-card highlight">
+                    <div class="for-who-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3>O Empreendedor Cansado</h3>
+                    <p>Trabalha 12h por dia há anos. A empresa não funciona sem você. Quer liberdade, descanso, tempo com a família.</p>
+                    <span class="for-who-tag">40% dos nossos alunos</span>
+                </div>
+                
+                <!-- PERSONA 2: Marcelo - O Estratégico -->
+                <div class="for-who-card">
+                    <div class="for-who-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <h3>O Estratégico</h3>
+                    <p>Quer maximizar o valor da empresa antes de vender. Busca um plano claro, metodologia comprovada e ROI calculado.</p>
+                    <span class="for-who-tag">35% dos nossos alunos</span>
+                </div>
+                
+                <!-- PERSONA 3: Carlos - O Patriarca -->
+                <div class="for-who-card">
+                    <div class="for-who-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <h3>O Patriarca</h3>
+                    <p>Filhos não querem assumir. Quer garantir o futuro da família, vender com dignidade e ter uma aposentadoria tranquila.</p>
+                    <span class="for-who-tag">25% dos nossos alunos</span>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SEÇÃO: PROBLEMA
+         ============================================ -->
+    <section class="problem">
+        <div class="container">
+            <div class="problem-header">
+                <h2>Por que a maioria das empresas nunca consegue vender?</h2>
+                <p>70% das empresas listadas para venda nunca encontram comprador. O problema não é o mercado...</p>
+            </div>
+            
+            <div class="problem-grid">
+                
+                <div class="problem-card">
+                    <h3>❌ Empresa dependente do dono</h3>
+                    <p>Se você sai 1 semana, vira caos. Nenhum comprador quer comprar um emprego.</p>
+                    <div class="problem-quote">
+                        "Não consigo tirar férias. Se eu saio, tudo para."
+                    </div>
+                </div>
+                
+                <div class="problem-card">
+                    <h3>❌ Números desorganizados</h3>
+                    <p>Comprador quer ver 3 anos de DRE, fluxo de caixa, margem real. Você tem?</p>
+                    <div class="problem-quote">
+                        "Minha contabilidade é só pro fisco. Não sei minha margem real."
+                    </div>
+                </div>
+                
+                <div class="problem-card">
+                    <h3>❌ Não sabe quanto vale</h3>
+                    <p>Sem valuation profissional, você aceita qualquer oferta - ou pede demais e afasta compradores.</p>
+                    <div class="problem-quote">
+                        "Um cara ofereceu 500k, outro 2M. Não faço ideia do que é justo."
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SEÇÃO: SOLUÇÃO
+         ============================================ -->
+    <section class="solution">
+        <div class="container">
+            <div class="solution-header">
+                <h2>A solução: Preparar ANTES de vender</h2>
+                <p>Empresas preparadas vendem por 2-3x mais e encontram comprador em metade do tempo</p>
+            </div>
+            
+            <div class="solution-grid">
+                
+                <div class="solution-card">
+                    <div class="solution-number">1</div>
+                    <h3>Empresa que funciona sem você</h3>
+                    <p>Processos documentados, equipe autônoma, você trabalha 4h/dia (ou menos)</p>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="solution-number">2</div>
+                    <h3>Números claros e auditáveis</h3>
+                    <p>DRE, fluxo de caixa, margem real - tudo organizado para due diligence</p>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="solution-number">3</div>
+                    <h3>Valuation profissional</h3>
+                    <p>Saiba exatamente quanto sua empresa vale e como aumentar esse valor</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SEÇÃO: O QUE VOCÊ VAI APRENDER
+         ============================================ -->
+    <section class="modules">
+        <div class="container">
+            <div class="modules-header">
+                <h2>O que você vai aprender em 12 semanas</h2>
+                <p>Um passo a passo prático para preparar sua empresa para venda</p>
+            </div>
+            
+            <div class="module-list">
+                
+                <div class="module-item">
+                    <div class="module-number">1</div>
+                    <div class="module-content">
+                        <h3>Diagnóstico de Vendabilidade</h3>
+                        <p>Avalie o estado atual da sua empresa: o que já está pronto e o que precisa ser ajustado antes de vender.</p>
+                        <span class="module-deliverable">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            Entregável: Relatório de Diagnóstico
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="module-item">
+                    <div class="module-number">2</div>
+                    <div class="module-content">
+                        <h3>Processos e Operação Autônoma</h3>
+                        <p>Documente os processos-chave e crie uma estrutura que funcione sem você no dia a dia.</p>
+                        <span class="module-deliverable">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            Entregável: Manual de Processos
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="module-item">
+                    <div class="module-number">3</div>
+                    <div class="module-content">
+                        <h3>Organização Financeira</h3>
+                        <p>Organize DRE, fluxo de caixa, e indicadores que compradores querem ver.</p>
+                        <span class="module-deliverable">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            Entregável: Dashboard Financeiro
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="module-item">
+                    <div class="module-number">4</div>
+                    <div class="module-content">
+                        <h3>Estrutura de Pessoas</h3>
+                        <p>Monte um organograma funcional e prepare lideranças para assumir quando você sair.</p>
+                        <span class="module-deliverable">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            Entregável: Organograma + PDIs
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="module-item">
+                    <div class="module-number">5</div>
+                    <div class="module-content">
+                        <h3>Valuation e Múltiplos</h3>
+                        <p>Calcule o valor real da sua empresa e entenda como aumentar o múltiplo de venda.</p>
+                        <span class="module-deliverable">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            Entregável: Relatório de Valuation
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="module-item">
+                    <div class="module-number">6</div>
+                    <div class="module-content">
+                        <h3>Plano de Exit em 24 Meses</h3>
+                        <p>Monte seu roadmap personalizado: o que fazer mês a mês até a venda.</p>
+                        <span class="module-deliverable">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            Entregável: Plano de Ação 24 Meses
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SEÇÃO: PROVA SOCIAL
+         ============================================ -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="testimonials-header">
+                <h2>Quem já preparou sua empresa</h2>
+                <p>Veja os resultados de empreendedores que passaram pela formação</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                
+                <!-- Depoimento 1: Para Roberto (Liberdade) -->
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">
+                        "Trabalhava 14 horas por dia. Depois da formação, reduzi para 4 horas e a empresa fatura mais. Agora estou negociando a venda com tranquilidade."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JM</div>
+                        <div class="testimonial-info">
+                            <h4>João Marcos</h4>
+                            <p>Distribuidor de Alimentos, SP</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-result">
+                        <div class="testimonial-result-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                        </div>
+                        <span class="testimonial-result-text">De 14h para 4h/dia + proposta 2.5x maior</span>
+                    </div>
+                </div>
+                
+                <!-- Depoimento 2: Para Marcelo (Valuation) -->
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">
+                        "A primeira oferta foi de R$1.2M. Depois de aplicar o método, recusei e fechei por R$3.4M. O ROI da formação foi absurdo."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RA</div>
+                        <div class="testimonial-info">
+                            <h4>Ricardo Andrade</h4>
+                            <p>Agência de Marketing, PR</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-result">
+                        <div class="testimonial-result-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <span class="testimonial-result-text">Vendeu por R$3.4M (vs oferta inicial de R$1.2M)</span>
+                    </div>
+                </div>
+                
+                <!-- Depoimento 3: Para Carlos (Família) -->
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">
+                        "Meus filhos não queriam a empresa. Achei que ia morrer trabalhando. Hoje estou aposentado, com a família protegida e viajando o mundo."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CS</div>
+                        <div class="testimonial-info">
+                            <h4>Carlos Silva</h4>
+                            <p>Indústria de Embalagens, SC</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-result">
+                        <div class="testimonial-result-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                        </div>
+                        <span class="testimonial-result-text">Aposentado + família protegida</span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SEÇÃO: MENTOR
+         ============================================ -->
+    <section class="mentor">
+        <div class="container">
+            <div class="mentor-content">
+                
+                <div class="mentor-image">
+                    <div class="mentor-photo">
+                        <!-- Substituir por foto real -->
+                        👤
+                    </div>
+                    <div class="mentor-badge">+50 empresas preparadas</div>
+                </div>
+                
+                <div class="mentor-info">
+                    <h2>Quem vai te guiar nessa jornada</h2>
+                    <p>
+                        [Nome do Mentor] é empreendedor e consultor especializado em preparação de empresas para venda. 
+                        Já ajudou mais de 50 empresários a saírem de seus negócios com o valor que mereciam.
+                    </p>
+                    
+                    <ul class="mentor-credentials">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            Vendeu sua própria empresa por 7 dígitos após 15 anos
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            +50 empresas preparadas para venda nos últimos 5 anos
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            Média de aumento de valuation: 2.5x após preparação
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            Especialista em PMEs de R$500k a R$10M de faturamento
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SEÇÃO: PREÇO
+         ============================================ -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="pricing-header">
+                <h2>Investimento</h2>
+                <p>Quanto custa NÃO se preparar? Empresas mal preparadas vendem por 40% menos.</p>
+            </div>
+            
+            <div class="pricing-card">
+                
+                <span class="pricing-tag">Turma Janeiro/2025</span>
+                
+                <div class="pricing-value">
+                    <p class="pricing-old">De R$15.000</p>
+                    <p class="pricing-current"><span>R$</span>8.997</p>
+                </div>
+                
+                <p class="pricing-installment">ou 12x de R$899</p>
+                
+                <ul class="pricing-features">
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        12 semanas de formação completa
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        6 encontros de mentoria em grupo ao vivo
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        Templates e planilhas prontas para usar
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        Relatório de Valuation personalizado
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        Comunidade de empreendedores
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        Acesso vitalício às aulas gravadas
+                    </li>
+                </ul>
+                
+                <!-- CTA Override: Roberto (Liberdade) -->
+                <a href="#" class="btn btn-primary pricing-cta">
+                    QUERO MINHA LIBERDADE →
+                </a>
+                
+                <div class="pricing-guarantee">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                    Garantia incondicional de 15 dias
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SEÇÃO: GARANTIA
+         ============================================ -->
+    <section class="guarantee">
+        <div class="container">
+            <div class="guarantee-content">
+                
+                <div class="guarantee-badge">
+                    <span>15</span>
+                    <span>dias</span>
+                </div>
+                
+                <div class="guarantee-text">
+                    <h3>Garantia Incondicional de 15 Dias</h3>
+                    <p>
+                        Se em até 15 dias você sentir que a formação não é para você, basta enviar um email 
+                        e devolvemos 100% do seu investimento. Sem perguntas, sem burocracia.
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SEÇÃO: FAQ
+         ============================================ -->
+    <section class="faq">
+        <div class="container">
+            <div class="faq-header">
+                <h2>Perguntas Frequentes</h2>
+            </div>
+            
+            <div class="faq-list">
+                
+                <!-- FAQ 1: Objeção Roberto (Tempo) -->
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Não tenho tempo. Trabalho demais. Funciona pra mim?
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+                    </button>
+                    <div class="faq-answer hidden">
+                        <p>
+                            Entendo perfeitamente - você já trabalha 60 horas por semana há anos. 
+                            A formação exige apenas 4 horas por semana durante 12 semanas. 
+                            É menos de 1 hora por dia. E cada hora investida aqui te devolve anos de vida. 
+                            Além disso, um dos módulos ensina exatamente como reduzir sua carga horária 
+                            enquanto prepara a empresa para venda.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 2: Objeção Marcelo (Tipo de empresa) -->
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Meu tipo de empresa é diferente. Funciona para [serviços/indústria/varejo]?
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+                    </button>
+                    <div class="faq-answer hidden">
+                        <p>
+                            O framework funciona para qualquer PME entre R$500k e R$10M de faturamento. 
+                            Já aplicamos em agências, consultorias, distribuidoras, indústrias, clínicas, 
+                            e-commerces. Os princípios de valuation e preparação são os mesmos - 
+                            só os múltiplos mudam por setor.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 3: Objeção Carlos (Confiança) -->
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Posso conversar com alguém antes de decidir?
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+                    </button>
+                    <div class="faq-answer hidden">
+                        <p>
+                            Claro! Entendemos que é uma decisão importante. Você pode agendar uma conversa 
+                            de 15 minutos com nossa equipe para tirar dúvidas. Além disso, podemos te 
+                            conectar com outros empresários que já passaram pela formação para ouvir 
+                            diretamente a experiência deles.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 4: Preço -->
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Isso é caro. Vale o investimento?
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+                    </button>
+                    <div class="faq-answer hidden">
+                        <p>
+                            Quanto custa NÃO se preparar? Em média, empresas mal preparadas vendem por 40% menos. 
+                            Se sua empresa vale R$2M, são R$800k jogados fora. O investimento na formação 
+                            representa menos de 1% do potencial de aumento de valuation. 
+                            É o melhor ROI que você pode ter.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 5: Quando vender -->
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Ainda não sei se quero vender. Faz sentido para mim?
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+                    </button>
+                    <div class="faq-answer hidden">
+                        <p>
+                            Sim! Preparar sua empresa para venda também significa ter uma empresa melhor. 
+                            Processos documentados, finanças organizadas, equipe autônoma - tudo isso 
+                            beneficia você agora, mesmo que decida não vender. E quando chegar a hora 
+                            (seja daqui a 2 ou 10 anos), você estará pronto.
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SEÇÃO: CTA FINAL
+         ============================================ -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Pronto para comprar sua liberdade?</h2>
+            <p>
+                Você trabalhou anos para construir sua empresa. 
+                Agora é hora de colher o fruto desse trabalho da forma certa.
+            </p>
+            <a href="#pricing" class="btn btn-primary">
+                QUERO MINHA LIBERDADE →
+            </a>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Formação Exit Ready. Todos os direitos reservados.</p>
+            <p style="margin-top: 8px;">
+                <a href="#">Termos de Uso</a> • <a href="#">Política de Privacidade</a>
+            </p>
+        </div>
+    </footer>
+    
+    <!-- ============================================
+         SCRIPTS
+         ============================================ -->
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                
+                button.setAttribute('aria-expanded', !isExpanded);
+                answer.classList.toggle('hidden');
+            });
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>
