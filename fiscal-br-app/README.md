@@ -1,123 +1,244 @@
 # Fiscal BR - Assistente Fiscal Brasileiro
 
-MCP Server para a OpenAI App Store focado em operações fiscais brasileiras.
+Solução completa para operações fiscais brasileiras com MCP Server + Frontend ChatKit.
+
+![Fiscal BR](https://img.shields.io/badge/Fiscal_BR-v1.0.0-blue)
+![OpenAI ChatKit](https://img.shields.io/badge/ChatKit-React-green)
+![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-orange)
+
+## Visão Geral
+
+O Fiscal BR é uma aplicação completa que inclui:
+- **MCP Server** (Cloudflare Workers) - Backend com tools fiscais
+- **Frontend** (React + ChatKit) - Interface de chat moderna
+- **API Backend** (FastAPI) - Orquestração ChatKit + MCP
+
+## Arquitetura
+
+```
+┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│                 │     │                 │     │                 │
+│    Frontend     │────▶│  FastAPI        │────▶│  MCP Server     │
+│  React+ChatKit  │     │  Backend        │     │  (Workers)      │
+│                 │     │                 │     │                 │
+└─────────────────┘     └─────────────────┘     └─────────────────┘
+     :3000                   :8000                   :8787
+```
 
 ## Funcionalidades
 
-### Validação de Documentos
-- **validar_cpf** - Valida CPF com verificação de dígitos
-- **validar_cnpj** - Valida CNPJ com verificação de dígitos
-- **validar_chave_nfe** - Valida chave de acesso NFe (44 dígitos)
+### Tools Fiscais (11 ferramentas)
 
-### Consultas
-- **consultar_cnpj** - Consulta dados da empresa na Receita Federal (via BrasilAPI)
-- **consultar_ncm** - Consulta código NCM com descrição e alíquotas
-- **consultar_cfop** - Consulta código CFOP com descrição
+| Categoria | Tool | Descrição |
+|-----------|------|-----------|
+| **Validação** | `validar_cpf` | Valida CPF com dígitos verificadores |
+| | `validar_cnpj` | Valida CNPJ com dígitos verificadores |
+| | `validar_chave_nfe` | Valida chave NFe (44 dígitos) |
+| **Consulta** | `consultar_cnpj` | Consulta empresa na Receita Federal |
+| | `consultar_ncm` | NCM com alíquotas IPI/PIS/COFINS |
+| | `consultar_cfop` | CFOP com descrição |
+| **Cálculo** | `calcular_icms` | ICMS interno/interestadual + DIFAL |
+| | `calcular_pis_cofins` | PIS/COFINS cumulativo e não-cumulativo |
+| | `calcular_simples_nacional` | Simples Nacional (Anexo I) |
+| | `calcular_iss` | ISS sobre serviços (2%-5%) |
+| | `calcular_impostos_nf` | Cálculo completo de NF |
 
-### Cálculo de Impostos
-- **calcular_icms** - Calcula ICMS (interno e interestadual, com DIFAL)
-- **calcular_pis_cofins** - Calcula PIS/COFINS (cumulativo e não-cumulativo)
-- **calcular_simples_nacional** - Calcula imposto do Simples (Anexo I - Comércio)
-- **calcular_iss** - Calcula ISS sobre serviços
-- **calcular_impostos_nf** - Cálculo completo para nota fiscal
+## Quick Start
 
-## Exemplos de Uso
-
-### Validar CPF
-```
-"Valide o CPF 123.456.789-09"
-```
-
-### Consultar Empresa
-```
-"Consulte os dados da empresa com CNPJ 00.000.000/0001-91"
-```
-
-### Calcular ICMS
-```
-"Calcule o ICMS de uma venda de R$ 10.000 de SP para RJ"
-```
-
-### Calcular Simples Nacional
-```
-"Quanto de imposto do Simples Nacional para uma empresa com faturamento de R$ 500.000 nos últimos 12 meses e R$ 50.000 este mês?"
-```
-
-### Cálculo Completo de NF
-```
-"Calcule todos os impostos de uma NF de R$ 5.000 em produtos + R$ 300 de frete, de MG para SP, NCM 8471.30.19 (notebook), empresa Lucro Real"
-```
-
-## Instalação
+### 1. Clonar e Configurar
 
 ```bash
+# Configurar variáveis de ambiente
+cp .env.example .env
+# Editar .env com sua OPENAI_API_KEY
+```
+
+### 2. Iniciar MCP Server (Worker)
+
+```bash
+cd fiscal-br-app
 npm install
-```
-
-## Desenvolvimento
-
-```bash
 npm run dev
+# Rodando em http://localhost:8787
 ```
 
-Acesse http://localhost:8787
-
-## Deploy
+### 3. Iniciar Backend FastAPI
 
 ```bash
-npm run deploy
+cd backend
+pip install -r requirements.txt
+python -m uvicorn app.main:app --reload --port 8000
+# Rodando em http://localhost:8000
 ```
 
-## Testes
+### 4. Iniciar Frontend
 
 ```bash
-# Testar localmente
-npm run test
-
-# Testar produção
-npm run test:prod https://fiscal-br.seu-dominio.workers.dev
+cd frontend
+npm install
+npm run dev
+# Rodando em http://localhost:3000
 ```
+
+### 5. Acessar
+
+Abra http://localhost:3000 no navegador.
 
 ## Estrutura do Projeto
 
 ```
 fiscal-br-app/
-├── src/
-│   └── index.ts      # Worker principal com todas as tools
-├── tests/
-│   ├── run-tests.js  # Script de testes
+├── src/                      # MCP Server (Cloudflare Worker)
+│   └── index.ts              # Worker com todas as tools
+├── frontend/                 # Frontend React + ChatKit
+│   ├── src/
+│   │   ├── components/       # Componentes React
+│   │   │   ├── Header.tsx
+│   │   │   ├── Sidebar.tsx
+│   │   │   ├── ChatPanel.tsx
+│   │   │   ├── MessageBubble.tsx
+│   │   │   ├── ToolResultDisplay.tsx
+│   │   │   ├── SuggestionCards.tsx
+│   │   │   └── QuickActions.tsx
+│   │   ├── lib/
+│   │   │   └── config.ts     # Configurações ChatKit
+│   │   ├── styles/
+│   │   │   └── globals.css   # Tailwind + customizações
+│   │   ├── App.tsx
+│   │   └── main.tsx
+│   ├── package.json
+│   ├── vite.config.ts
+│   └── tailwind.config.js
+├── backend/                  # Backend FastAPI
+│   ├── app/
+│   │   └── main.py           # API + integração MCP
+│   └── requirements.txt
+├── tests/                    # Testes do MCP Server
+│   ├── run-tests.js
 │   └── test-cases.json
-├── wrangler.toml     # Config Cloudflare
+├── wrangler.toml             # Config Cloudflare
 ├── package.json
-├── tsconfig.json
 └── README.md
 ```
 
-## APIs Utilizadas
+## Exemplos de Uso
 
-- [BrasilAPI](https://brasilapi.com.br) - Consulta CNPJ e NCM (gratuita)
+### Via Chat (Frontend)
 
-## Tabelas Fiscais Incluídas
+```
+"Valide o CNPJ 11.222.333/0001-81 e mostre os dados da empresa"
 
-- Alíquotas ICMS por estado (internas e interestaduais)
-- Tabela Simples Nacional - Anexo I (Comércio)
-- NCMs comuns com alíquotas IPI/PIS/COFINS
-- CFOPs mais utilizados
+"Calcule o ICMS de uma venda de R$ 10.000 de SP para BA"
 
-## Limitações
+"Quanto de Simples Nacional para faturamento de R$ 500.000/ano?"
 
-- Tabelas de impostos simplificadas (consulte legislação para casos específicos)
-- Simples Nacional apenas Anexo I (Comércio)
-- NCM com base limitada (expanda conforme necessidade)
+"Calcule os impostos de uma NF: R$ 5.000 produtos, R$ 300 frete,
+ de MG para SP, NCM 8471.30.19, empresa Lucro Real"
+```
+
+### Via API
+
+```bash
+# Listar tools disponíveis
+curl http://localhost:8000/api/tools
+
+# Enviar mensagem
+curl -X POST http://localhost:8000/api/chat \
+  -H "Content-Type: application/json" \
+  -d '{"messages":[{"role":"user","content":"Valide o CPF 529.982.247-25"}]}'
+```
+
+### Via MCP Server direto
+
+```bash
+curl -X POST http://localhost:8787/mcp \
+  -H "Content-Type: application/json" \
+  -d '{
+    "jsonrpc": "2.0",
+    "method": "tools/call",
+    "params": {
+      "name": "calcular_icms",
+      "arguments": {"valor": 10000, "uf_origem": "SP", "uf_destino": "RJ"}
+    },
+    "id": "1"
+  }'
+```
+
+## Frontend Features
+
+- **Interface ChatKit** - Experiência de chat moderna
+- **Sugestões rápidas** - Cards com exemplos de uso
+- **Painel lateral** - Histórico de conversas
+- **Quick Actions** - Acesso rápido às ferramentas por categoria
+- **Resultados formatados** - Visualização rica para cada tipo de tool
+- **Tema customizado** - Cores e estilos fiscais/profissionais
+- **Responsivo** - Funciona em desktop e mobile
+
+## Deploy
+
+### MCP Server (Cloudflare)
+
+```bash
+npm run deploy
+```
+
+### Frontend (Vercel/Netlify)
+
+```bash
+cd frontend
+npm run build
+# Deploy da pasta dist/
+```
+
+### Backend (Railway/Render/etc)
+
+```bash
+cd backend
+# Deploy com uvicorn
+```
+
+## Tecnologias
+
+- **Frontend**: React 18, Vite, TailwindCSS, Lucide Icons
+- **Backend**: FastAPI, OpenAI SDK, httpx
+- **MCP Server**: Cloudflare Workers, TypeScript
+- **APIs**: BrasilAPI (CNPJ, NCM)
+
+## Testes
+
+```bash
+# Testar MCP Server
+node tests/run-tests.js http://localhost:8787
+
+# Com relatório HTML
+node tests/run-tests.js http://localhost:8787 --html
+```
+
+## Variáveis de Ambiente
+
+| Variável | Descrição | Obrigatória |
+|----------|-----------|-------------|
+| `OPENAI_API_KEY` | Chave API da OpenAI | Sim |
+| `MCP_SERVER_URL` | URL do MCP Server | Não (default: localhost:8787) |
+| `VITE_CHATKIT_API_URL` | URL da API para frontend | Não (default: /chatkit) |
 
 ## Roadmap
 
-- [ ] Adicionar mais anexos do Simples Nacional
-- [ ] Integrar consulta SEFAZ para NFe
-- [ ] Cálculo de ST (Substituição Tributária)
-- [ ] Integrar base completa de NCM
-- [ ] Suporte a GNRE
+- [x] MCP Server com 11 tools
+- [x] Frontend ChatKit React
+- [x] Backend FastAPI
+- [x] Integração completa
+- [ ] Autenticação de usuários
+- [ ] Persistência de histórico
+- [ ] Mais anexos Simples Nacional
+- [ ] Integração SEFAZ
+- [ ] Cálculo de ST
+- [ ] App móvel
 
 ## Licença
 
 MIT
+
+---
+
+Desenvolvido com base no projeto [comeca-ai/projeto_Apps](https://github.com/comeca-ai/projeto_Apps)
