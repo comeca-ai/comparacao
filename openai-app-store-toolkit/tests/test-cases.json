@@ -1,0 +1,204 @@
+{
+  "description": "Casos de teste para MCP Server - OpenAI App Store",
+  "version": "1.0.0",
+  "testCases": {
+    "success": [
+      {
+        "id": "S01",
+        "name": "Health Check",
+        "description": "Verifica se o servidor está respondendo",
+        "method": "GET",
+        "endpoint": "/health",
+        "expectedStatus": 200,
+        "expectedBody": {
+          "status": "healthy"
+        }
+      },
+      {
+        "id": "S02",
+        "name": "MCP Manifest",
+        "description": "Verifica o manifesto MCP",
+        "method": "GET",
+        "endpoint": "/.well-known/mcp.json",
+        "expectedStatus": 200,
+        "expectedBody": {
+          "name": "MCP Agents Proxy",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "id": "S03",
+        "name": "Tools List",
+        "description": "Lista todas as tools disponíveis",
+        "method": "POST",
+        "endpoint": "/mcp",
+        "body": {
+          "jsonrpc": "2.0",
+          "method": "tools/list",
+          "id": "test-s03"
+        },
+        "expectedStatus": 200,
+        "expectedBody": {
+          "jsonrpc": "2.0",
+          "result": {
+            "tools": []
+          }
+        },
+        "validateArrayNotEmpty": "result.tools"
+      },
+      {
+        "id": "S04",
+        "name": "Server Info",
+        "description": "Obtém informações do servidor",
+        "method": "POST",
+        "endpoint": "/mcp",
+        "body": {
+          "jsonrpc": "2.0",
+          "method": "server/info",
+          "id": "test-s04"
+        },
+        "expectedStatus": 200,
+        "expectedBody": {
+          "jsonrpc": "2.0",
+          "result": {
+            "protocolVersion": "2024-11-05"
+          }
+        }
+      },
+      {
+        "id": "S05",
+        "name": "Tool Call - get_data",
+        "description": "Executa a tool get_data com sucesso",
+        "method": "POST",
+        "endpoint": "/mcp",
+        "body": {
+          "jsonrpc": "2.0",
+          "method": "tools/call",
+          "params": {
+            "name": "get_data",
+            "arguments": {
+              "query": "teste",
+              "limit": 10
+            }
+          },
+          "id": "test-s05"
+        },
+        "expectedStatus": 200,
+        "expectedBody": {
+          "jsonrpc": "2.0",
+          "result": {
+            "isError": false
+          }
+        }
+      },
+      {
+        "id": "S06",
+        "name": "Tool Call - update_data",
+        "description": "Executa a tool update_data com sucesso",
+        "method": "POST",
+        "endpoint": "/mcp",
+        "body": {
+          "jsonrpc": "2.0",
+          "method": "tools/call",
+          "params": {
+            "name": "update_data",
+            "arguments": {
+              "id": "123",
+              "data": {
+                "name": "Atualizado"
+              }
+            }
+          },
+          "id": "test-s06"
+        },
+        "expectedStatus": 200,
+        "expectedBody": {
+          "jsonrpc": "2.0",
+          "result": {
+            "isError": false
+          }
+        }
+      },
+      {
+        "id": "S07",
+        "name": "Tool Call - delete_data (com confirmação)",
+        "description": "Executa a tool delete_data com confirmação",
+        "method": "POST",
+        "endpoint": "/mcp",
+        "body": {
+          "jsonrpc": "2.0",
+          "method": "tools/call",
+          "params": {
+            "name": "delete_data",
+            "arguments": {
+              "id": "123",
+              "confirm": true
+            }
+          },
+          "id": "test-s07"
+        },
+        "expectedStatus": 200,
+        "expectedBody": {
+          "jsonrpc": "2.0",
+          "result": {
+            "isError": false
+          }
+        }
+      }
+    ],
+    "error": [
+      {
+        "id": "E01",
+        "name": "Unauthorized (401)",
+        "description": "Testa resposta para requisição não autorizada",
+        "method": "POST",
+        "endpoint": "/mcp",
+        "headers": {
+          "Authorization": "Bearer invalid-token"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "method": "tools/list",
+          "id": "test-e01"
+        },
+        "expectedStatus": [200, 401],
+        "note": "Depende da configuração de auth do servidor"
+      },
+      {
+        "id": "E02",
+        "name": "Rate Limit (429)",
+        "description": "Testa resposta quando rate limit é excedido",
+        "method": "POST",
+        "endpoint": "/mcp",
+        "body": {
+          "jsonrpc": "2.0",
+          "method": "tools/list",
+          "id": "test-e02"
+        },
+        "repeatCount": 100,
+        "expectedStatus": 429,
+        "expectedHeaders": {
+          "Retry-After": "60"
+        },
+        "note": "Executa 100 requisições rápidas para triggerar rate limit"
+      },
+      {
+        "id": "E03",
+        "name": "Invalid JSON-RPC",
+        "description": "Testa resposta para JSON-RPC inválido",
+        "method": "POST",
+        "endpoint": "/mcp",
+        "body": {
+          "invalid": "request"
+        },
+        "expectedStatus": 400,
+        "expectedBody": {
+          "jsonrpc": "2.0",
+          "error": {
+            "code": -32600
+          }
+        }
+      }
+    ]
+  }
+}
