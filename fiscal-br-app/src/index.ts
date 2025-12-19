@@ -1108,7 +1108,41 @@ export default {
       });
     }
 
-    // MCP endpoint
+    // SSE endpoint (for Remote MCP Server - Cloudflare standard)
+    if (url.pathname === "/sse") {
+      // SSE transport para clientes MCP
+      const encoder = new TextEncoder();
+      const stream = new ReadableStream({
+        start(controller) {
+          // Send initial connection event
+          const initEvent = `event: open\ndata: {"status":"connected","server":"Fiscal BR","version":"1.0.0"}\n\n`;
+          controller.enqueue(encoder.encode(initEvent));
+
+          // Keep connection alive
+          const keepAlive = setInterval(() => {
+            controller.enqueue(encoder.encode(`: keepalive\n\n`));
+          }, 30000);
+
+          // Cleanup on close
+          setTimeout(() => {
+            clearInterval(keepAlive);
+            controller.close();
+          }, 300000); // 5 min timeout
+        }
+      });
+
+      return new Response(stream, {
+        headers: {
+          "Content-Type": "text/event-stream",
+          "Cache-Control": "no-cache",
+          "Connection": "keep-alive",
+          "Access-Control-Allow-Origin": "*",
+          ...CSP_HEADERS
+        }
+      });
+    }
+
+    // MCP endpoint (HTTP transport - primary for OpenAI)
     if (request.method === "POST" && (url.pathname === "/" || url.pathname === "/mcp")) {
       try {
         const body = await request.json() as MCPRequest;
@@ -1123,7 +1157,11 @@ export default {
 
         const response = await handleMCPRequest(body);
         return new Response(JSON.stringify(response), {
-          headers: { "Content-Type": "application/json", ...CSP_HEADERS }
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            ...CSP_HEADERS
+          }
         });
 
       } catch (error) {
@@ -1133,6 +1171,29 @@ export default {
           id: null
         }), { status: 500, headers: { "Content-Type": "application/json", ...CSP_HEADERS } });
       }
+    }
+
+    // Landing page with info
+    if (url.pathname === "/" && request.method === "GET") {
+      return new Response(JSON.stringify({
+        name: "Fiscal BR",
+        description: "MCP Server - Assistente Fiscal Brasileiro",
+        version: "1.0.0",
+        endpoints: {
+          mcp: "/mcp",
+          sse: "/sse",
+          health: "/health",
+          manifest: "/.well-known/mcp.json"
+        },
+        tools: TOOLS.map(t => t.name),
+        documentation: "https://github.com/comeca-ai/comparacao"
+      }), {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          ...CSP_HEADERS
+        }
+      });
     }
 
     return new Response(JSON.stringify({ error: "Not Found" }), {
