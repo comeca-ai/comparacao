@@ -1,0 +1,13 @@
+name = "fiscal-br"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+ENVIRONMENT = "production"
+RATE_LIMIT_RPM = "60"
+
+# Configuração para deploy
+# routes = [
+#   { pattern = "fiscal.seudominio.com/*", zone_name = "seudominio.com" }
+# ]

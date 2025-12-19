@@ -1,0 +1,339 @@
+{
+  "description": "Casos de teste para Fiscal BR - MCP Server",
+  "version": "1.0.0",
+  "testCases": {
+    "success": [
+      {
+        "id": "S01",
+        "name": "Health Check",
+        "description": "Verifica se o servidor está respondendo",
+        "method": "GET",
+        "endpoint": "/health",
+        "expectedStatus": 200,
+        "expectedBody": {
+          "status": "healthy",
+          "app": "Fiscal BR"
+        }
+      },
+      {
+        "id": "S02",
+        "name": "MCP Manifest",
+        "description": "Verifica o manifesto MCP",
+        "method": "GET",
+        "endpoint": "/.well-known/mcp.json",
+        "expectedStatus": 200,
+        "expectedBody": {
+          "name": "Fiscal BR",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "id": "S03",
+        "name": "Tools List",
+        "description": "Lista todas as tools fiscais disponíveis",
+        "method": "POST",
+        "endpoint": "/mcp",
+        "body": {
+          "jsonrpc": "2.0",
+          "method": "tools/list",
+          "id": "test-s03"
+        },
+        "expectedStatus": 200,
+        "validateArrayLength": {
+          "path": "result.tools",
+          "minLength": 10
+        }
+      },
+      {
+        "id": "S04",
+        "name": "Validar CPF Válido",
+        "description": "Valida um CPF válido",
+        "method": "POST",
+        "endpoint": "/mcp",
+        "body": {
+          "jsonrpc": "2.0",
+          "method": "tools/call",
+          "params": {
+            "name": "validar_cpf",
+            "arguments": {
+              "cpf": "529.982.247-25"
+            }
+          },
+          "id": "test-s04"
+        },
+        "expectedStatus": 200,
+        "validateContent": {
+          "contains": "valido\":true"
+        }
+      },
+      {
+        "id": "S05",
+        "name": "Validar CNPJ Válido",
+        "description": "Valida um CNPJ válido",
+        "method": "POST",
+        "endpoint": "/mcp",
+        "body": {
+          "jsonrpc": "2.0",
+          "method": "tools/call",
+          "params": {
+            "name": "validar_cnpj",
+            "arguments": {
+              "cnpj": "11.222.333/0001-81"
+            }
+          },
+          "id": "test-s05"
+        },
+        "expectedStatus": 200,
+        "validateContent": {
+          "contains": "valido\":true"
+        }
+      },
+      {
+        "id": "S06",
+        "name": "Calcular ICMS Interno SP",
+        "description": "Calcula ICMS interno em São Paulo",
+        "method": "POST",
+        "endpoint": "/mcp",
+        "body": {
+          "jsonrpc": "2.0",
+          "method": "tools/call",
+          "params": {
+            "name": "calcular_icms",
+            "arguments": {
+              "valor": 1000,
+              "uf_origem": "SP",
+              "uf_destino": "SP"
+            }
+          },
+          "id": "test-s06"
+        },
+        "expectedStatus": 200,
+        "validateContent": {
+          "contains": "aliquota\":18"
+        }
+      },
+      {
+        "id": "S07",
+        "name": "Calcular ICMS Interestadual SP-RJ",
+        "description": "Calcula ICMS interestadual SP para RJ",
+        "method": "POST",
+        "endpoint": "/mcp",
+        "body": {
+          "jsonrpc": "2.0",
+          "method": "tools/call",
+          "params": {
+            "name": "calcular_icms",
+            "arguments": {
+              "valor": 1000,
+              "uf_origem": "SP",
+              "uf_destino": "RJ"
+            }
+          },
+          "id": "test-s07"
+        },
+        "expectedStatus": 200,
+        "validateContent": {
+          "contains": "aliquota\":12"
+        }
+      },
+      {
+        "id": "S08",
+        "name": "Calcular PIS/COFINS Cumulativo",
+        "description": "Calcula PIS/COFINS regime cumulativo",
+        "method": "POST",
+        "endpoint": "/mcp",
+        "body": {
+          "jsonrpc": "2.0",
+          "method": "tools/call",
+          "params": {
+            "name": "calcular_pis_cofins",
+            "arguments": {
+              "valor": 10000,
+              "regime": "cumulativo"
+            }
+          },
+          "id": "test-s08"
+        },
+        "expectedStatus": 200,
+        "validateContent": {
+          "contains": "Lucro Presumido"
+        }
+      },
+      {
+        "id": "S09",
+        "name": "Calcular Simples Nacional",
+        "description": "Calcula imposto do Simples Nacional",
+        "method": "POST",
+        "endpoint": "/mcp",
+        "body": {
+          "jsonrpc": "2.0",
+          "method": "tools/call",
+          "params": {
+            "name": "calcular_simples_nacional",
+            "arguments": {
+              "receita_bruta_12m": 500000,
+              "receita_mes": 50000
+            }
+          },
+          "id": "test-s09"
+        },
+        "expectedStatus": 200,
+        "validateContent": {
+          "contains": "aliquota_efetiva"
+        }
+      },
+      {
+        "id": "S10",
+        "name": "Consultar CFOP",
+        "description": "Consulta informações de um CFOP",
+        "method": "POST",
+        "endpoint": "/mcp",
+        "body": {
+          "jsonrpc": "2.0",
+          "method": "tools/call",
+          "params": {
+            "name": "consultar_cfop",
+            "arguments": {
+              "cfop": "5102"
+            }
+          },
+          "id": "test-s10"
+        },
+        "expectedStatus": 200,
+        "validateContent": {
+          "contains": "Venda de mercadoria"
+        }
+      },
+      {
+        "id": "S11",
+        "name": "Validar Chave NFe",
+        "description": "Valida estrutura de chave de acesso NFe",
+        "method": "POST",
+        "endpoint": "/mcp",
+        "body": {
+          "jsonrpc": "2.0",
+          "method": "tools/call",
+          "params": {
+            "name": "validar_chave_nfe",
+            "arguments": {
+              "chave": "35240312345678000195550010000001231000001234"
+            }
+          },
+          "id": "test-s11"
+        },
+        "expectedStatus": 200,
+        "note": "Valida estrutura da chave, DV pode falhar se chave for fictícia"
+      },
+      {
+        "id": "S12",
+        "name": "Calcular ISS",
+        "description": "Calcula ISS sobre serviço",
+        "method": "POST",
+        "endpoint": "/mcp",
+        "body": {
+          "jsonrpc": "2.0",
+          "method": "tools/call",
+          "params": {
+            "name": "calcular_iss",
+            "arguments": {
+              "valor": 5000,
+              "aliquota": 5,
+              "municipio": "São Paulo"
+            }
+          },
+          "id": "test-s12"
+        },
+        "expectedStatus": 200,
+        "validateContent": {
+          "contains": "valor_iss\":250"
+        }
+      }
+    ],
+    "error": [
+      {
+        "id": "E01",
+        "name": "CPF Inválido",
+        "description": "Testa validação de CPF inválido",
+        "method": "POST",
+        "endpoint": "/mcp",
+        "body": {
+          "jsonrpc": "2.0",
+          "method": "tools/call",
+          "params": {
+            "name": "validar_cpf",
+            "arguments": {
+              "cpf": "111.111.111-11"
+            }
+          },
+          "id": "test-e01"
+        },
+        "expectedStatus": 200,
+        "validateContent": {
+          "contains": "valido\":false"
+        }
+      },
+      {
+        "id": "E02",
+        "name": "CNPJ Inválido",
+        "description": "Testa validação de CNPJ inválido",
+        "method": "POST",
+        "endpoint": "/mcp",
+        "body": {
+          "jsonrpc": "2.0",
+          "method": "tools/call",
+          "params": {
+            "name": "validar_cnpj",
+            "arguments": {
+              "cnpj": "00.000.000/0000-00"
+            }
+          },
+          "id": "test-e02"
+        },
+        "expectedStatus": 200,
+        "validateContent": {
+          "contains": "valido\":false"
+        }
+      },
+      {
+        "id": "E03",
+        "name": "JSON-RPC Inválido",
+        "description": "Testa resposta para JSON-RPC inválido",
+        "method": "POST",
+        "endpoint": "/mcp",
+        "body": {
+          "invalid": "request"
+        },
+        "expectedStatus": 400,
+        "expectedBody": {
+          "jsonrpc": "2.0",
+          "error": {
+            "code": -32600
+          }
+        }
+      },
+      {
+        "id": "E04",
+        "name": "Simples Nacional Limite Excedido",
+        "description": "Testa empresa que excede limite do Simples",
+        "method": "POST",
+        "endpoint": "/mcp",
+        "body": {
+          "jsonrpc": "2.0",
+          "method": "tools/call",
+          "params": {
+            "name": "calcular_simples_nacional",
+            "arguments": {
+              "receita_bruta_12m": 5000000,
+              "receita_mes": 100000
+            }
+          },
+          "id": "test-e04"
+        },
+        "expectedStatus": 200,
+        "validateContent": {
+          "contains": "limite_excedido\":true"
+        }
+      }
+    ]
+  }
+}
