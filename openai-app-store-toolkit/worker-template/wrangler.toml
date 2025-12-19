@@ -1,0 +1,31 @@
+name = "mcp-agents-proxy"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Variáveis de ambiente (configure no dashboard ou via wrangler secret)
+# OPENAI_API_KEY = "sk-..."
+
+[vars]
+ENVIRONMENT = "production"
+RATE_LIMIT_RPM = "60"
+KEEP_ALIVE_DAYS = "7"
+
+# Rotas customizadas (opcional)
+# routes = [
+#   { pattern = "mcp.seudominio.com/*", zone_name = "seudominio.com" }
+# ]
+
+# KV Namespace para cache e rate limiting (opcional)
+# [[kv_namespaces]]
+# binding = "MCP_CACHE"
+# id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# Durable Objects para estado (opcional)
+# [[durable_objects.bindings]]
+# name = "RATE_LIMITER"
+# class_name = "RateLimiter"
+
+# Analytics Engine (opcional)
+# [[analytics_engine_datasets]]
+# binding = "ANALYTICS"
