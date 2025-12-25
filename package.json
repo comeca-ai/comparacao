@@ -1,0 +1,30 @@
+{
+  "name": "meu-chatgpt-app",
+  "version": "0.1.0",
+  "description": "MCP + React ChatGPT App Template",
+  "type": "module",
+  "scripts": {
+    "build:web": "cd web && npm run build",
+    "dev:server": "node --loader ts-node/esm server/src/index.ts",
+    "dev:web": "cd web && npm run dev",
+    "install:all": "npm install && cd web && npm install",
+    "check:types": "tsc --noEmit"
+  },
+  "keywords": [
+    "mcp",
+    "chatgpt",
+    "react",
+    "template"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  }
+}
