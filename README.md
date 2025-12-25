@@ -162,6 +162,8 @@ A ideia define:
 3. **Implemente o widget** conforme necessário
 4. **Teste via MCP Inspector**
 
+📖 **Veja o [GETTING_STARTED.md](./GETTING_STARTED.md) para um guia detalhado de como criar sua primeira tool!**
+
 ## 🔗 Recursos
 
 - [MCP SDK Documentation](https://modelcontextprotocol.io)
